@@ -204,17 +204,17 @@
         (playerChoice === '✋' && pcChoice === '✊') ||
         (playerChoice === '✌️' && pcChoice === '✋')
       ) {
-        status = "KAMU MENANG! +5 🔥";
+        status = "Gokil otw ceo +5 🔥";
         pointsGained = 5;
       } else {
-        status = "KAMU KALAH! -4 💀";
+        status = "........... -4 💀";
         pointsGained = -4;
       }
 
       userData.score += pointsGained;
       if (userData.score < 0) userData.score = 0; // Skor tidak minus
 
-      resDisplay.innerHTML = `Kamu: ${playerChoice} vs PC: ${pcChoice}<br>${status}`;
+      resDisplay.innerHTML = `Kamu: ${playerChoice} vs CEO ASLI: ${pcChoice}<br>${status}`;
       
       // Update ke Firebase
       await updateDoc(doc(db, "players", currentUser.uid), { score: userData.score });
