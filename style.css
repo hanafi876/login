@@ -1,0 +1,70 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: radial-gradient(circle at center, #0f0f0f, #000);
+  color: white;
+  text-align: center;
+  overflow: hidden;
+}
+
+.container {
+  margin-top: 100px;
+}
+
+button {
+  padding: 15px 30px;
+  font-size: 18px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(45deg, #ff0055, #ff9900);
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px #ff0055;
+}
+
+.hidden {
+  display: none;
+}
+
+/* ANIMASI ORB */
+.orb, .orb2, .orb3 {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  animation: float 6s infinite ease-in-out;
+}
+
+.orb {
+  width: 200px;
+  height: 200px;
+  background: red;
+  top: 30%;
+  left: 20%;
+}
+
+.orb2 {
+  width: 250px;
+  height: 250px;
+  background: blue;
+  top: 50%;
+  left: 60%;
+}
+
+.orb3 {
+  width: 180px;
+  height: 180px;
+  background: purple;
+  top: 70%;
+  left: 40%;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-50px); }
+  100% { transform: translateY(0px); }
+}

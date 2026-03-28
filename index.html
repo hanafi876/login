@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Google Keren</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- HALAMAN LOGIN -->
+<div id="loginPage" class="container">
+  <h1>🔥 Welcome</h1>
+  <p>Login dulu buat masuk ke dunia keren 😎</p>
+  <button onclick="loginGoogle()">Login dengan Google</button>
+</div>
+
+<!-- HALAMAN SETELAH LOGIN -->
+<div id="homePage" class="container hidden">
+  <h1 id="userName"></h1>
+  <p>Selamat datang di dunia digital 🔥</p>
+
+  <!-- ANIMASI -->
+  <div class="orb"></div>
+  <div class="orb2"></div>
+  <div class="orb3"></div>
+</div>
+
+<!-- FIREBASE + SCRIPT -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+import { getAuth, GoogleAuthProvider, signInWithPopup } 
+from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
+
+// CONFIG KAMU
+const firebaseConfig = {
+  apiKey: "AIzaSyAY6LV_wAqR3ggGpa8Ikmj_D3k8C6ya_pA",
+  authDomain: "kokokokokokk-ee46b.firebaseapp.com",
+  projectId: "kokokokokokk-ee46b",
+  storageBucket: "kokokokokokk-ee46b.firebasestorage.app",
+  messagingSenderId: "990174890024",
+  appId: "1:990174890024:web:ab6abde9af8559e9318d1d"
+};
+
+// INIT
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
+
+// LOGIN FUNCTION
+window.loginGoogle = function() {
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      const user = result.user;
+
+      document.getElementById("loginPage").classList.add("hidden");
+      document.getElementById("homePage").classList.remove("hidden");
+
+      document.getElementById("userName").innerText =
+        "🔥 Halo, " + user.displayName;
+    })
+    .catch((error) => {
+      alert(error.message);
+    });
+}
+</script>
+
+</body>
+</html>
