@@ -197,22 +197,22 @@
       let status = "";
 
       if (playerChoice === pcChoice) {
-        status = "SERI! 🤝";
+        status = "Skill anda setara dengan CEO";
         pointsGained = 0;
       } else if (
         (playerChoice === '✊' && pcChoice === '✌️') ||
         (playerChoice === '✋' && pcChoice === '✊') ||
         (playerChoice === '✌️' && pcChoice === '✋')
       ) {
-        status = "Gokil otw ceo +5 🔥";
+        status = "Gokil sang CEO merasa terancam +5 🔥";
         pointsGained = 5;
       } else {
-        status = "........... -4 💀";
+        status = "lanjutkan perjuangan mu -4 💀";
         pointsGained = -4;
       }
 
       userData.score += pointsGained;
-      if (userData.score < 0) userData.score = 0; // Skor tidak minus
+
 
       resDisplay.innerHTML = `Kamu: ${playerChoice} vs CEO ASLI: ${pcChoice}<br>${status}`;
       
