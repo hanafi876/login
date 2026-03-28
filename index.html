@@ -3,282 +3,1283 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dark Fantasy Quest - Cosmic Battle</title>
+  <title>🌌 ULTRA COSMIC APOCALYPSE REALM 🌌 | LEGENDARY QUEST</title>
   
   <style>
-
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Cinzel', serif; /* Font Gothic/Fantasy (Opsional, pakai sans-serif juga gapapa) */
-      background: #000; /* Hitam pekat */
-      color: #eee;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      overflow: hidden; /* Mencegah scroll saat animasi */
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Orbitron:wght@400;700;900&family=Creepster&family=Bungee&display=swap');
+    
+    :root {
+      --primary-gold: #ffd700;
+      --primary-orange: #ff4500;
+      --neon-blue: #00ff88;
+      --void-purple: #4a0e7a;
+      --cosmic-red: #ff1493;
+      --ultra-white: #ffffff;
+      --black-void: #000000;
     }
 
-    .container {
-      text-align: center;
-      transition: opacity 1s ease-in-out;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      background: var(--black-void);
+    }
+
+    /* MULTI-LAYERED GALAXY BACKGROUND */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
-      max-width: 600px;
-      padding: 20px;
+      height: 100%;
+      background: 
+        radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+        radial-gradient(2px 2px at 40px 70px, #fff, transparent),
+        radial-gradient(1px 1px at 90px 40px, #ddd, transparent),
+        radial-gradient(1px 1px at 130px 80px, #fff, transparent),
+        linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.03) 50%, transparent 70%);
+      background-size: 200px 100px, 150px 120px, 100px 80px, 80px 60px, 100% 100%;
+      animation: galaxyDrift 100s linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes galaxyDrift {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      100% { transform: translate(50px, 50px) rotate(360deg); }
+    }
+
+    /* DYNAMIC STARFIELD LAYER 1 */
+    .stars-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .star-bg {
+      position: absolute;
+      background: radial-gradient(circle, #ffffff 0%, transparent 70%);
+      border-radius: 50%;
+      animation: starTwinkle 4s infinite ease-in-out;
+    }
+
+    /* DYNAMIC STARFIELD LAYER 2 */
+    .stars-fg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .star-fg {
+      position: absolute;
+      background: radial-gradient(circle, #ffd700 0%, #ff4500 50%, transparent 70%);
+      border-radius: 50%;
+      animation: starPulse 3s infinite ease-in-out;
+      box-shadow: 0 0 10px currentColor;
+    }
+
+    @keyframes starTwinkle {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.4); }
+    }
+
+    @keyframes starPulse {
+      0%, 100% { opacity: 0.4; transform: scale(1) rotate(0deg); }
+      50% { opacity: 1; transform: scale(1.6) rotate(180deg); }
+    }
+
+    /* NEBULA CLOUDS */
+    .nebula {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 4;
+      background: 
+        radial-gradient(ellipse 100% 60% at 20% 30%, rgba(255,69,0,0.1) 0%, transparent 50%),
+        radial-gradient(ellipse 80% 50% at 80% 70%, rgba(255,215,0,0.08) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 40% at 40% 10%, rgba(0,255,136,0.06) 0%, transparent 50%);
+      animation: nebulaFlow 60s ease-in-out infinite;
+    }
+
+    @keyframes nebulaFlow {
+      0%, 100% { opacity: 0.6; transform: scale(1) translate(0, 0); }
+      33% { opacity: 0.8; transform: scale(1.05) translate(10px, -10px); }
+      66% { opacity: 0.7; transform: scale(0.98) translate(-5px, 15px); }
+    }
+
+    /* PARTICLE SYSTEMS */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      background: radial-gradient(circle, var(--primary-gold), transparent);
+      box-shadow: 0 0 8px currentColor;
+    }
+
+    /* SHATTER EFFECTS */
+    .shatter {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: radial-gradient(circle, var(--primary-gold), transparent);
+      border-radius: 50%;
+      pointer-events: none;
+      box-shadow: 0 0 15px var(--primary-gold);
+    }
+
+    /* ELECTRICITY EFFECTS */
+    .electricity {
+      position: absolute;
+      background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+      height: 2px;
+      border-radius: 50%;
+      pointer-events: none;
+      box-shadow: 0 0 10px var(--neon-blue);
+      animation: electricityBolt 0.5s infinite;
+    }
+
+    @keyframes electricityBolt {
+      0%, 100% { opacity: 0; transform: scaleX(0); }
+      50% { opacity: 1; transform: scaleX(1); }
+    }
+
+    /* MAIN CONTAINER */
+    .container {
+      position: relative;
+      z-index: 1000;
+      text-align: center;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 30px;
+      transition: all 1.5s cubic-bezier(0.23, 1, 0.32, 1);
+      transform-style: preserve-3d;
     }
 
     .hidden {
       display: none !important;
       opacity: 0;
+      transform: scale(0.8) translateY(50px);
     }
 
-    /* Tampilan Halaman Login */
+    /* LOADING SCREEN - COSMIC RITUAL */
+    #loadingScreen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--black-void);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 99999;
+      animation: loadingRitual 3s ease-out forwards;
+    }
+
+    .loading-title {
+      font-size: 5rem;
+      font-weight: 900;
+      font-family: 'Creepster', cursive;
+      background: linear-gradient(45deg, var(--cosmic-red), var(--primary-gold), var(--neon-blue), var(--primary-orange));
+      background-size: 400% 400%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 50px rgba(255, 69, 0, 0.8);
+      animation: loadingTitle 2s ease-in-out infinite, hueShift 4s linear infinite;
+      margin-bottom: 30px;
+      letter-spacing: 8px;
+    }
+
+    .loading-spinner {
+      width: 120px;
+      height: 120px;
+      border: 6px solid rgba(255, 215, 0, 0.1);
+      border-top: 6px solid var(--primary-gold);
+      border-radius: 50%;
+      animation: spin 1s linear infinite, pulseRing 2s ease-in-out infinite;
+      position: relative;
+    }
+
+    .loading-spinner::before,
+    .loading-spinner::after {
+      content: '';
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      right: -20px;
+      bottom: -20px;
+      border: 3px solid transparent;
+      border-top-color: var(--neon-blue);
+      border-radius: 50%;
+      animation: spin 1.5s linear infinite reverse;
+    }
+
+    .loading-spinner::after {
+      border-top-color: var(--cosmic-red);
+      animation-duration: 2s;
+    }
+
+    @keyframes loadingRitual {
+      0% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { opacity: 0; display: none; }
+    }
+
+    @keyframes loadingTitle {
+      0%, 100% { transform: scale(1) rotateX(0deg); }
+      50% { transform: scale(1.1) rotateX(5deg); }
+    }
+
+    @keyframes hueShift {
+      0% { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(360deg); }
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes pulseRing {
+      0% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7); }
+      70% { box-shadow: 0 0 0 50px rgba(255, 215, 0, 0); }
+      100% { box-shadow: 0 0 0 50px rgba(255, 215, 0, 0); }
+    }
+
+    /* LOGIN PAGE - DIVINE PORTAL */
+    #loginPage {
+      animation: portalEntrance 2s ease-out;
+    }
+
+    @keyframes portalEntrance {
+      0% {
+        opacity: 0;
+        transform: scale(0.5) rotateY(90deg);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) rotateY(0deg);
+      }
+    }
+
     #loginPage h1 {
-      font-size: 3rem;
-      color: #ff4500; /* Merah oranye gelap */
-      text-shadow: 0 0 15px #ff4500;
-      margin-bottom: 10px;
+      font-size: 6rem;
+      font-weight: 900;
+      font-family: 'Bungee', cursive;
+      background: linear-gradient(45deg, 
+        var(--cosmic-red), var(--primary-gold), 
+        var(--neon-blue), var(--primary-orange), 
+        var(--void-purple), var(--ultra-white));
+      background-size: 600% 600%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 
+        0 0 60px var(--primary-orange),
+        0 0 120px var(--primary-gold),
+        0 0 200px var(--neon-blue);
+      margin-bottom: 25px;
+      animation: epicTitle 3s ease-in-out infinite, 
+                 gradientShift 5s ease infinite,
+                 float3D 6s ease-in-out infinite;
+      letter-spacing: 12px;
+      text-transform: uppercase;
+      position: relative;
+    }
+
+    #loginPage h1::after {
+      content: '⚡ DIVINE PORTAL ⚡';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.2rem;
+      color: var(--neon-blue);
+      animation: subtitleGlow 2s ease-in-out infinite alternate;
+      letter-spacing: 4px;
+    }
+
+    @keyframes epicTitle {
+      0%, 100% { 
+        transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1);
+        text-shadow: 0 0 60px var(--primary-orange);
+      }
+      25% { 
+        transform: perspective(1000px) rotateX(10deg) rotateY(-5deg) scale(1.02);
+        text-shadow: 0 0 80px var(--primary-gold);
+      }
+      50% { 
+        transform: perspective(1000px) rotateX(-5deg) rotateY(8deg) scale(1.05);
+        text-shadow: 0 0 100px var(--neon-blue);
+      }
+      75% { 
+        transform: perspective(1000px) rotateX(5deg) rotateY(-10deg) scale(1.03);
+        text-shadow: 0 0 120px var(--cosmic-red);
+      }
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes float3D {
+      0%, 100% { transform: translateZ(0px); }
+      50% { transform: translateZ(30px); }
+    }
+
+    @keyframes subtitleGlow {
+      0% { opacity: 0.5; text-shadow: 0 0 10px var(--neon-blue); }
+      100% { opacity: 1; text-shadow: 0 0 30px var(--neon-blue), 0 0 50px var(--neon-blue); }
     }
 
     #loginPage p {
-      color: #aaa;
-      margin-bottom: 30px;
+      color: #ccc;
+      font-size: 1.8rem;
+      margin-bottom: 50px;
+      animation: fadeInUp 1.5s ease-out 0.8s both;
+      letter-spacing: 3px;
+      text-shadow: 0 0 20px rgba(255,255,255,0.3);
     }
 
-    /* Tombol Login */
+    /* ULTIMATE LOGIN BUTTON */
     .login-btn {
-      padding: 15px 40px;
-      font-size: 1.2rem;
-      font-weight: bold;
-      border: 2px solid #555;
-      border-radius: 50px;
-      background: #111;
-      color: #fff;
+      position: relative;
+      padding: 25px 80px;
+      font-size: 2rem;
+      font-weight: 900;
+      font-family: 'Orbitron', monospace;
+      text-transform: uppercase;
+      letter-spacing: 6px;
+      border: 4px solid transparent;
+      border-radius: 60px;
+      background: linear-gradient(145deg, 
+        rgba(20,20,40,0.9), 
+        rgba(100,20,20,0.7));
+      color: var(--ultra-white);
       cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 10px rgba(255, 69, 0, 0.2);
+      transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+      box-shadow: 
+        0 0 50px rgba(255,69,0,0.6),
+        0 20px 40px rgba(0,0,0,0.8),
+        inset 0 1px 0 rgba(255,255,255,0.3);
+      overflow: hidden;
+      min-width: 350px;
+      animation: buttonBreath 4s ease-in-out infinite;
+    }
+
+    .login-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255,255,255,0.4), 
+        transparent);
+      transition: left 0.7s;
+    }
+
+    .login-btn:hover::before {
+      left: 100%;
+    }
+
+    .login-btn .btn-glow {
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: conic-gradient(
+        from 0deg,
+        var(--primary-orange),
+        var(--primary-gold),
+        var(--neon-blue),
+        var(--cosmic-red),
+        var(--primary-orange)
+      );
+      border-radius: 64px;
+      z-index: -1;
+      animation: btnRotate 8s linear infinite;
     }
 
     .login-btn:hover {
-      background: #ff4500;
-      border-color: #ff4500;
-      color: #000;
-      box-shadow: 0 0 30px #ff4500;
-      transform: scale(1.05);
+      background: linear-gradient(145deg, 
+        var(--primary-orange), 
+        var(--primary-gold));
+      border-image: linear-gradient(45deg, 
+        var(--ultra-white), 
+        var(--neon-blue)) 1;
+      color: var(--black-void);
+      box-shadow: 
+        0 0 100px var(--primary-orange),
+        0 0 200px var(--primary-gold),
+        0 0 300px var(--neon-blue),
+        0 25px 50px rgba(0,0,0,0.9);
+      transform: translateY(-10px) scale(1.08) rotateX(15deg);
+      animation: none;
     }
 
+    .login-btn:active {
+      transform: translateY(-5px) scale(1.05) rotateX(10deg);
+    }
+
+    @keyframes buttonBreath {
+      0%, 100% { 
+        box-shadow: 
+          0 0 50px rgba(255,69,0,0.6),
+          inset 0 1px 0 rgba(255,255,255,0.3);
+      }
+      50% { 
+        box-shadow: 
+          0 0 70px rgba(255,69,0,0.8),
+          inset 0 1px 0 rgba(255,255,255,0.5);
+      }
+    }
+
+    @keyframes btnRotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg);}
+
+        }
+
+    /* COSMIC BATTLE - SUPERNOVA APOCALYPSE */
     #cosmicBattle {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: #000;
+      background: radial-gradient(ellipse at center, 
+        rgba(0,10,30,1) 0%, 
+        rgba(0,0,0,1) 60%);
       display: flex;
       justify-content: center;
       align-items: center;
-      z-index: 9999; /* Selalu di atas */
-      transition: opacity 1.5s ease-in-out;
+      z-index: 9998;
+      transition: all 3s cubic-bezier(0.23, 1, 0.32, 1);
+      overflow: hidden;
     }
 
-    .battle-container {
+    .battle-arena {
       position: relative;
-      width: 300px;
-      height: 300px;
+      width: 600px;
+      height: 600px;
+      perspective: 1000px;
     }
 
-    /* Matahari (Kiri -> Kanan) */
+    /* SUPERNOVA SUN - ULTIMATE */
     .sun {
       position: absolute;
-      width: 150px;
-      height: 150px;
-      background: radial-gradient(circle, #fff 0%, #ffdf00 40%, #ff8c00 70%, transparent 100%);
+      width: 220px;
+      height: 220px;
+      top: 190px;
+      left: -300px;
       border-radius: 50%;
-      top: 75px;
-      left: -200px; /* Mulai dari luar kiri */
-      box-shadow: 0 0 60px #ffdf00, 0 0 100px #ff8c00;
-      animation: sun-move 4s forwards cubic-bezier(0.4, 0, 0.2, 1);
+      background: conic-gradient(
+        from 0deg at 50% 50%,
+        #ffffff 0deg,
+        #ffdf00 45deg,
+        #ff8c00 90deg,
+        #ff4500 135deg,
+        #ff1493 225deg,
+        #ffffff 360deg
+      );
+      box-shadow: 
+        0 0 100px #ffdf00,
+        0 0 200px #ff8c00,
+        0 0 300px #ff4500,
+        inset 0 0 80px rgba(255,255,255,0.4),
+        inset 0 0 150px rgba(255,255,0,0.2);
+      animation: 
+        sunApocalypse 6s forwards cubic-bezier(0.4, 0, 0.2, 1),
+        sunFury 0.8s infinite,
+        sunOrbit 20s linear infinite;
+      transform-style: preserve-3d;
     }
 
-    /* Bulan (Kanan -> Kiri) */
+    @keyframes sunApocalypse {
+      0% { left: -300px; transform: rotateY(0deg) scale(1); }
+      45% { left: 190px; transform: rotateY(180deg) scale(1.15); }
+      55% { left: 190px; transform: rotateY(200deg) scale(1.3); }
+      100% { left: 190px; transform: rotateY(360deg) scale(1.1); }
+    }
+
+    @keyframes sunFury {
+      0%, 100% { 
+        box-shadow: 
+          0 0 100px #ffdf00,
+          0 0 200px #ff8c00,
+          0 0 300px #ff4500;
+      }
+      50% { 
+        box-shadow: 
+          0 0 150px #ffdf00,
+          0 0 300px #ff8c00,
+          0 0 500px #ff4500,
+          0 0 700px #ffffff;
+      }
+    }
+
+    @keyframes sunOrbit {
+      0% { transform: rotateY(0deg); }
+      100% { transform: rotateY(360deg); }
+    }
+
+    /* VOID MOON - ABYSS */
     .moon {
       position: absolute;
-      width: 140px;
-      height: 140px;
-      background: #111; /* Gelap pekat */
+      width: 210px;
+      height: 210px;
+      top: 195px;
+      right: -300px;
       border-radius: 50%;
-      top: 80px;
-      right: -200px; /* Mulai dari luar kanan */
-      box-shadow: 0 0 30px rgba(255, 255, 255, 0.2) inset, 0 0 50px rgba(100, 100, 100, 0.5);
-      animation: moon-move 4s forwards cubic-bezier(0.4, 0, 0.2, 1);
+      background: 
+        radial-gradient(ellipse 30% 40% at 25% 25%, #1a1a3a 0%, transparent 50%),
+        radial-gradient(ellipse 20% 30% at 75% 70%, #0a0a1a 0%, transparent 50%),
+        #000811;
+      box-shadow: 
+        0 0 60px rgba(100,100,255,0.6),
+        0 0 120px rgba(50,50,150,0.4),
+        inset 0 0 100px rgba(0,0,0,0.95),
+        inset 0 0 200px rgba(20,20,60,0.6);
+      animation: 
+        moonApocalypse 6s forwards cubic-bezier(0.4, 0, 0.2, 1),
+        moonEclipse 1.2s infinite,
+        moonVoidPulse 4s ease-in-out infinite;
+      transform-style: preserve-3d;
     }
 
-    /* Efek Cahaya Gerhana (Tengah) */
-    .eclipse-aura {
+    @keyframes moonApocalypse {
+      0% { right: -300px; transform: rotateY(360deg) scale(1); }
+      45% { right: 195px; transform: rotateY(180deg) scale(1.12); }
+      55% { right: 195px; transform: rotateY(160deg) scale(1.25); }
+      100% { right: 195px; transform: rotateY(0deg) scale(1.08); }
+    }
+
+    @keyframes moonEclipse {
+      0%, 100% { 
+        box-shadow: 
+          0 0 60px rgba(100,100,255,0.6),
+          inset 0 0 100px rgba(0,0,0,0.95);
+      }
+      50% { 
+        box-shadow: 
+          0 0 100px rgba(100,100,255,0.9),
+          0 0 200px rgba(150,150,255,0.5),
+          inset 0 0 150px rgba(0,0,0,1);
+      }
+    }
+
+    /* SUPERNOVA COLLISION */
+    .collision-core {
       position: absolute;
-      width: 160px;
-      height: 160px;
+      width: 0;
+      height: 0;
+      top: 300px;
+      left: 300px;
       border-radius: 50%;
-      background: transparent;
-      top: 70px;
-      left: 70px; /* Posisi tengah */
-      box-shadow: 0 0 50px #fff, 0 0 100px #ffd700;
+      background: conic-gradient(
+        #ffffff, #ffd700, #ff4500, #ff1493, #00ff88, #ffffff
+      );
       opacity: 0;
-      animation: eclipse-glow 1s forwards 2.5s; /* Muncul setelah tabrakan */
+      transform: scale(0);
+      animation: coreIgnition 4s forwards 2.8s;
+      box-shadow: 0 0 0 rgba(255,255,255,0);
     }
 
-    /* Keyframes Animasi */
-    @keyframes sun-move {
-      0% { left: -200px; }
-      50% { left: 75px; } /* Bertemu di tengah */
-      60% { left: 75px; transform: scale(1.1); } /* Sedikit membesar saat tabrakan */
-      100% { left: 75px; transform: scale(1); } /* Tetap di tengah */
+    @keyframes coreIgnition {
+      0% { 
+        width: 0; 
+        height: 0; 
+        opacity: 1; 
+        transform: scale(0); 
+        box-shadow: 0 0 0 rgba(255,255,255,0);
+      }
+      20% { 
+        width: 100px; 
+        height: 100px; 
+        transform: scale(1); 
+        box-shadow: 0 0 100px #ffffff;
+      }
+      50% { 
+        width: 300px; 
+        height: 300px; 
+        opacity: 1; 
+        transform: scale(2.5); 
+        box-shadow: 0 0 300px #ffd700, 0 0 500px #ff4500;
+      }
+      80% { 
+        width: 500px; 
+        height: 500px; 
+        opacity: 0.8; 
+        transform: scale(5); 
+        box-shadow: 0 0 600px #ffffff, 0 0 1000px #ffd700;
+      }
+      100% { 
+        width: 800px; 
+        height: 800px; 
+        opacity: 0; 
+        transform: scale(10); 
+        box-shadow: 0 0 1200px rgba(255,255,255,0);
+      }
     }
 
-    @keyframes moon-move {
-      0% { right: -200px; }
-      50% { right: 80px; } /* Bertemu di tengah */
-      60% { right: 80px; transform: scale(1.05); } /* Sedikit membesar saat tabrakan */
-      100% { right: 80px; transform: scale(1); } /* Tetap di tengah */
+    /* MULTIPLE SHOCKWAVES */
+    .shockwave-1, .shockwave-2, .shockwave-3 {
+      position: absolute;
+      top: 300px;
+      left: 300px;
+      width: 0;
+      height: 0;
+      border: 3px solid rgba(255,215,0,0.8);
+      border-radius: 50%;
+      opacity: 0;
+      transform: scale(0);
     }
 
-    @keyframes eclipse-glow {
-      0% { opacity: 0; transform: scale(1); }
-      100% { opacity: 1; transform: scale(1.2); }
+    .shockwave-1 { animation: shockwaveBlast 2s forwards 3.2s; }
+    .shockwave-2 { animation: shockwaveBlast 2s forwards 3.5s 1.2s; }
+    .shockwave-3 { animation: shockwaveBlast 2s forwards 3.8s 0.8s; }
+
+    @keyframes shockwaveBlast {
+      0% { 
+        width: 0; 
+        height: 0; 
+        opacity: 1; 
+        border-color: rgba(255,215,0,0.9);
+      }
+      100% { 
+        width: 1200px; 
+        height: 1200px; 
+        opacity: 0; 
+        border-color: rgba(255,215,0,0);
+      }
     }
 
+    /* COSMIC RIFT */
+    .cosmic-rift {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 4px;
+      height: 0;
+      background: linear-gradient(to bottom, 
+        var(--neon-blue), var(--ultra-white), var(--neon-blue));
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      animation: riftTear 3s forwards 4s;
+      box-shadow: 0 0 30px var(--neon-blue);
+    }
 
+    @keyframes riftTear {
+      0% { height: 0; opacity: 0; }
+      50% { height: 400px; opacity: 1; }
+      100% { height: 800px; opacity: 0; }
+    }
+
+    /* HOME PAGE - LEGENDARY THRONE */
     #homePage {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      opacity: 1; /* Diatur oleh JS */
+      animation: throneReveal 3s cubic-bezier(0.23, 1, 0.32, 1) 7s forwards;
+      opacity: 0;
+    }
+
+    @keyframes throneReveal {
+      0% { 
+        opacity: 0; 
+        transform: scale(0.7) translateY(100px) rotateX(-30deg); 
+      }
+      100% { 
+        opacity: 1; 
+        transform: scale(1) translateY(0) rotateX(0deg); 
+      }
     }
 
     #homePage h1 {
-      font-size: 2.5rem;
-      color: #ffd700; /* Emas */
-      text-shadow: 0 0 10px #ffd700;
-      margin-bottom: 5px;
+      font-size: 4.5rem;
+      font-weight: 900;
+      font-family: 'Bungee', cursive;
+      background: linear-gradient(45deg, 
+        var(--primary-gold), var(--primary-orange), 
+        var(--neon-blue), var(--cosmic-red));
+      background-size: 500% 500%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 
+        0 0 40px var(--primary-gold),
+        0 0 80px var(--primary-orange);
+      margin-bottom: 20px;
+      animation: 
+        throneTitle 4s ease-in-out infinite,
+        gradientShift 6s ease infinite;
+      letter-spacing: 10px;
+      text-transform: uppercase;
+      position: relative;
+      z-index: 10;
+    }
+
+    #homePage h1::before {
+      content: '👑';
+      position: absolute;
+      top: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 3rem;
+      animation: crownFloat 3s ease-in-out infinite;
+    }
+
+    @keyframes throneTitle {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+    }
+
+    @keyframes crownFloat {
+      0%, 100% { transform: translateX(-50%) translateY(0px) rotate(0deg); }
+      33% { transform: translateX(-50%) translateY(-10px) rotate(5deg); }
+      66% { transform: translateX(-50%) translateY(5px) rotate(-3deg); }
     }
 
     #homePage p {
-      color: #ccc;
-      margin-bottom: 30px;
+      font-size: 1.6rem;
+      color: #ddd;
+      margin-bottom: 40px;
+      letter-spacing: 2px;
+      text-shadow: 0 0 20px rgba(255,255,255,0.5);
+      animation: fadeInUp 2s ease-out 0.5s both;
     }
 
-    /* Stats Card ala RPG */
-    .stats-card {
-      background: rgba(20, 20, 20, 0.8);
-      border: 2px solid #ffd700;
-      border-radius: 15px;
-      padding: 25px;
-      width: 320px;
-      box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
-      backdrop-filter: blur(5px);
+    /* LEGENDARY STATS THRONE */
+    .legendary-throne {
+      background: linear-gradient(145deg, 
+        rgba(15,15,35,0.95), 
+        rgba(5,5,20,0.9));
+      border: 4px solid;
+      border-image: linear-gradient(45deg, 
+        var(--primary-gold), var(--primary-orange), 
+        var(--neon-blue), var(--cosmic-red)) 1;
+      border-radius: 35px;
+      padding: 50px;
+      width: 700px;
+      max-width: 90vw;
+      box-shadow: 
+        0 0 80px rgba(255,215,0,0.5),
+        0 0 160px rgba(255,69,0,0.3),
+        inset 0 0 50px rgba(255,255,255,0.1),
+        0 30px 60px rgba(0,0,0,0.9);
+      backdrop-filter: blur(20px);
+      position: relative;
+      overflow: hidden;
+      animation: throneGlow 5s ease-in-out infinite alternate;
+    }
+
+    .legendary-throne::before {
+      content: '';
+      position: absolute;
+      top: -100%;
+      left: -100%;
+      width: 300%;
+      height: 300%;
+      background: conic-gradient(
+        transparent, rgba(255,215,0,0.15), transparent
+      );
+      animation: throneAura 25s linear infinite;
+    }
+
+    .legendary-throne::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 50px;
+      background: linear-gradient(to top, 
+        rgba(0,0,0,0.8), transparent);
+      border-radius: 0 0 35px 35px;
+    }
+
+    @keyframes throneGlow {
+      0% { 
+        box-shadow: 
+          0 0 80px rgba(255,215,0,0.5),
+          inset 0 0 50px rgba(255,255,255,0.1);
+      }
+      100% { 
+        box-shadow: 
+          0 0 120px rgba(255,215,0,0.8),
+          0 0 200px rgba(255,69,0,0.5),
+          inset 0 0 80px rgba(255,255,255,0.2);
+      }
+    }
+
+    @keyframes throneAura {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* LEGENDARY RANK */
+    .rank-display {
+      margin-bottom: 40px;
     }
 
     .rank-label {
-      font-size: 1rem;
-      color: #aaa;
-      letter-spacing: 2px;
-      margin-bottom: 5px;
+      font-size: 1.5rem;
+      color: var(--neon-blue);
+      letter-spacing: 6px;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      font-family: 'Orbitron', monospace;
+      font-weight: 700;
+      animation: rankLabelPulse 2s infinite;
+      text-shadow: 0 0 20px var(--neon-blue);
     }
 
     .rank-value {
-      font-size: 3rem;
-      font-weight: bold;
-      color: #ffd700;
-      text-shadow: 0 0 20px #ffd700;
-      margin-bottom: 20px;
-    }
-
-    .hp-bar-container {
-      margin-top: 15px;
-    }
-
-    .hp-label {
-      font-size: 0.9rem;
-      color: #ff5555;
-      margin-bottom: 5px;
-      text-align: left;
-    }
-
-    .hp-bar-bg {
-      width: 100%;
-      height: 25px;
-      background: #222;
-      border-radius: 12px;
-      border: 1px solid #444;
-      overflow: hidden;
+      font-size: 5rem;
+      font-weight: 900;
+      background: linear-gradient(45deg, 
+        var(--primary-gold), var(--primary-orange), 
+        var(--ultra-white));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 
+        0 0 50px var(--primary-gold),
+        0 0 100px var(--primary-orange);
+      margin-bottom: 10px;
+      font-family: 'Bungee', cursive;
+      animation: 
+        rankLegendary 3s ease-in-out infinite,
+        gradientShift 4s ease infinite;
+      letter-spacing: 8px;
+      text-transform: uppercase;
       position: relative;
     }
 
-    .hp-bar-fill {
-      width: 100%; /* Full HP */
-      height: 100%;
-      background: linear-gradient(90deg, #aa0000, #ff0000);
-      box-shadow: 0 0 15px #ff0000;
-      animation: hp-pulse 2s infinite;
+    .rank-value::after {
+      content: '∞';
+      position: absolute;
+      font-size: 2rem;
+      top: -20px;
+      right: -40px;
+      color: var(--neon-blue);
+      animation: infinitySpin 4s linear infinite;
     }
 
-    .hp-text {
+    @keyframes rankLabelPulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
+    @keyframes rankLegendary {
+      0%, 100% { 
+        transform: scale(1) rotateX(0deg); 
+        text-shadow: 0 0 50px var(--primary-gold);
+      }
+      50% { 
+        transform: scale(1.08) rotateX(10deg); 
+        text-shadow: 0 0 80px var(--primary-orange), 0 0 120px var(--primary-gold);
+      }
+    }
+
+    @keyframes infinitySpin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* ULTIMATE STATS GRID */
+    .ultimate-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .stat-container {
+      background: linear-gradient(145deg, 
+        rgba(25,25,55,0.9), 
+        rgba(10,10,35,0.8));
+      border: 2px solid rgba(255,255,255,0.2);
+      border-radius: 20px;
+      padding: 25px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.5s ease;
+    }
+
+    .stat-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, 
+        var(--primary-gold), var(--primary-orange), var(--neon-blue));
+      animation: statBarFlow 3s linear infinite;
+         
+    }
+
+    .stat-container:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(255,215,0,0.4);
+    }
+
+    .stat-label {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-family: 'Orbitron', monospace;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hp .stat-label { color: #ff4444; text-shadow: 0 0 15px #ff4444; }
+    .mp .stat-label { color: #4488ff; text-shadow: 0 0 15px #4488ff; }
+    .atk .stat-label { color: #ffaa00; text-shadow: 0 0 15px #ffaa00; }
+    .def .stat-label { color: #00ff88; text-shadow: 0 0 15px #00ff88; }
+
+    .stat-bar-outer {
+      width: 100%;
+      height: 40px;
+      background: rgba(20,20,40,0.8);
+      border-radius: 20px;
+      border: 2px solid rgba(255,255,255,0.1);
+      overflow: hidden;
+      position: relative;
+      box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
+    }
+
+    .stat-bar-fill {
+      height: 100%;
+      border-radius: 18px;
+      position: relative;
+      overflow: hidden;
+      transition: width 3s cubic-bezier(0.23, 1, 0.32, 1);
+      box-shadow: 0 0 20px currentColor;
+    }
+
+    .stat-bar-fill::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background: linear-gradient(90deg, 
+        transparent, rgba(255,255,255,0.4), transparent);
+      animation: shine 2s infinite;
+    }
+
+    @keyframes shine {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    .hp .stat-bar-fill {
+      background: linear-gradient(90deg, #aa0000, #ff4444, #ff8888);
+      animation: hpInferno 2s infinite;
+      width: 100% !important;
+    }
+
+    .mp .stat-bar-fill {
+      background: linear-gradient(90deg, #2244ff, #4488ff, #88aaff);
+      animation: mpCosmicWave 2.5s infinite;
+      width: 98% !important;
+    }
+
+    .atk .stat-bar-fill {
+      background: linear-gradient(90deg, #ff8800, #ffaa44, #ffdd88);
+      animation: atkLightning 1.5s infinite;
+      width: 99% !important;
+    }
+
+    .def .stat-bar-fill {
+      background: linear-gradient(90deg, #00aa44, #00ff88, #88ffcc);
+      animation: defShieldPulse 3s infinite;
+      width: 97% !important;
+    }
+
+    @keyframes hpInferno {
+      0%, 100% { filter: hue-rotate(0deg) brightness(1); }
+      50% { filter: hue-rotate(20deg) brightness(1.3); }
+    }
+
+    @keyframes mpCosmicWave {
+      0%, 100% { transform: scaleX(1); }
+      50% { transform: scaleX(1.05); }
+    }
+
+    @keyframes atkLightning {
+      0%, 100% { box-shadow: 0 0 20px #ffaa00; }
+      25%, 75% { box-shadow: 0 0 40px #ffaa00, 0 0 60px #ffdd88; }
+    }
+
+    @keyframes defShieldPulse {
+      0%, 100% { opacity: 0.9; }
+      50% { opacity: 1; }
+    }
+
+    .stat-value {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      color: #fff;
-      font-weight: bold;
-      font-size: 0.9rem;
-      text-shadow: 0 0 5px #000;
+      color: var(--ultra-white);
+      font-weight: 900;
+      font-size: 1.3rem;
+      font-family: 'Orbitron', monospace;
+      text-shadow: 
+        0 0 10px currentColor,
+        2px 2px 4px rgba(0,0,0,0.8);
+      z-index: 3;
+      animation: statNumberGlow 2s infinite;
     }
 
-    @keyframes hp-pulse {
-      0% { opacity: 0.8; }
-      50% { opacity: 1; }
-      100% { opacity: 0.8; }
+    @keyframes statNumberGlow {
+      0%, 100% { text-shadow: 0 0 10px currentColor; }
+      50% { text-shadow: 0 0 25px currentColor, 0 0 40px currentColor; }
+    }
+
+    /* FLOATING LEGENDARY ORBS */
+    .legendary-orb {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: orbOrbit 12s linear infinite;
+      box-shadow: 
+        0 0 25px currentColor,
+        inset 0 0 20px rgba(255,255,255,0.3);
+    }
+
+    .orb-gold { 
+      width: 25px; 
+      height: 25px; 
+      background: radial-gradient(circle, var(--primary-gold), #ffaa00);
+      top: 10%; 
+      left: 10%; 
+      animation-delay: 0s;
+    }
+
+    .orb-orange { 
+      width: 20px; 
+      height: 20px; 
+      background: radial-gradient(circle, var(--primary-orange), #ff7700);
+      top: 80%; 
+      right: 15%; 
+      animation-delay: 3s;
+    }
+
+    .orb-blue { 
+      width: 30px; 
+      height: 30px; 
+      background: radial-gradient(circle, var(--neon-blue), #00cc66);
+      bottom: 20%; 
+      left: 20%; 
+      animation-delay: 6s;
+    }
+
+    .orb-purple { 
+      width: 18px; 
+      height: 18px; 
+      background: radial-gradient(circle, var(--cosmic-red), #cc0066);
+      top: 30%; 
+      right: 25%; 
+      animation-delay: 9s;
+    }
+
+    @keyframes orbOrbit {
+      0% { 
+        transform: rotate(0deg) translateX(120px) rotate(0deg) scale(1); 
+      }
+      100% { 
+        transform: rotate(360deg) translateX(120px) rotate(-360deg) scale(1.1); 
+      }
+    }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 768px) {
+      #loginPage h1 { font-size: 3.5rem; letter-spacing: 6px; }
+      .login-btn { 
+        padding: 20px 50px; 
+        font-size: 1.5rem; 
+        min-width: 280px;
+      }
+      .legendary-throne { 
+        width: 95vw; 
+        padding: 40px 25px; 
+      }
+      .ultimate-stats { 
+        grid-template-columns: 1fr; 
+        gap: 20px; 
+      }
+      .rank-value { font-size: 3.5rem; }
+    }
+
+    @media (max-width: 480px) {
+      #loginPage h1 { font-size: 2.8rem; }
+      .battle-arena { width: 400px; height: 400px; }
+      .sun, .moon { width: 150px; height: 150px; }
+    }
+
+    /* PERFORMANCE OPTIMIZATIONS */
+    .will-change {
+      will-change: transform, opacity;
+    }
+
+    /* CUSTOM SCROLLBAR */
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: rgba(20,20,40,0.5);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(var(--primary-gold), var(--primary-orange));
+      border-radius: 6px;
+      box-shadow: 0 0 20px currentColor;
     }
   </style>
-  
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Orbitron:wght@400;700;900&family=Creepster&family=Bungee&display=swap" as="style">
 </head>
-<body>
 
-  <div id="loginPage" class="container">
-    <h1>sun kerah kalian bulan</h1>
-    <p>welkom ind</p>
-    <button class="login-btn" onclick="loginGoogle()">LOGIN       GOOGLE</button>
-  </div>
-
-  <div id="cosmicBattle" class="hidden">
-    <div class="battle-container">
-      <div class="sun"></div>
-      <div class="moon"></div>
-      <div class="eclipse-aura"></div>
+<body class="will-change">
+  <!-- LOADING RITUAL -->
+  <div id="loadingScreen">
+    <div class="loading-title">🌌 dolanan tok 🌌</div>
+    <div class="loading-spinner"></div>
+    <div style="margin-top: 30px; font-size: 1.2rem; color: #aaa; letter-spacing: 2px;">
+      Initializing Multiverse...
     </div>
   </div>
 
-  <div id="homePage" class="container hidden">
-    <h1 id="userName">selamat datang wahai manusia</h1>
-    <p>Rank mu telah ditentukan oleh takdir.</p>
+  <!-- MULTI-LAYERED BACKGROUND EFFECTS -->
+  <div class="nebula"></div>
+  <div class="stars-bg" id="starsBg"></div>
+  <div class="stars-fg" id="starsFg"></div>
+  <div class="particles" id="particles"></div>
 
-    <div class="stats-card">
-      <div class="rank-label">gokil abis</div>
-      <div class="rank-value">anda terlalu op rank di atas rata rata manusia</div>
-      
-      <div class="hp-bar-container">
-        <div class="hp-label">HEALTH POINTS</div>
-        <div class="hp-bar-bg">
-          <div class="hp-bar-fill"></div>
-          <div class="hp-text">9999999999999999999999999</div>
+  <!-- DIVINE PORTAL (LOGIN) -->
+  <div id="loginPage" class="container will-change">
+    <h1>⚡ SUN vs BULAN ⚡<br>ULTIMATE APOCALYPSE</h1>
+    <p>🌟 Masuk ke ranah legenda. Takdir kosmik menanti! 🌟</p>
+    <button class="login-btn will-change">
+      <div class="btn-glow"></div>
+      🚀 ENTER DIVINE REALM 🚀
+    </button>
+  </div>
+
+  <!-- COSMIC BATTLE ARENA -->
+  <div id="cosmicBattle" class="hidden will-change">
+    <div class="battle-arena">
+      <div class="sun will-change"></div>
+      <div class="moon will-change"></div>
+      <div class="collision-core will-change"></div>
+      <div class="shockwave-1 will-change"></div>
+      <div class="shockwave-2 will-change"></div>
+      <div class="shockwave-3 will-change"></div>
+      <div class="cosmic-rift will-change"></div>
+    </div>
+  </div>
+
+  <!-- LEGENDARY THRONE ROOM -->
+  <div id="homePage" class="container hidden will-change">
+    <h1 id="userName">👑 LEGENDARY WARRIOR 👑</h1>
+    <p>Rank mu telah ditentukan oleh Dewa Kosmos. Kau adalah yang terpilih!</p>
+
+    <div class="legendary-throne will-change">
+      <!-- LEGENDARY ORBS -->
+      <div class="legendary-orb orb-gold"></div>
+      <div class="legendary-orb orb-orange"></div>
+      <div class="legendary-orb orb-blue"></div>
+      <div class="legendary-orb orb-purple"></div>
+
+      <div class="rank-display">
+        <div class="rank-label">Status Legenda</div>
+        <div class="rank-value" id="legendaryRank">
+          ULTRA COSMIC GOD
+        </div>
+      </div>
+
+      <div class="ultimate-stats">
+        <div class="stat-container hp">
+          <div class="stat-label">Health Points</div>
+          <div class="stat-bar-outer">
+            <div class="stat-bar-fill">
+              <div class="stat-value">∞ / ∞</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stat-container mp">
+          <div class="stat-label">Mana Points</div>
+          <div class="stat-bar-outer">
+            <div class="stat-bar-fill">
+              <div class="stat-value">∞ / ∞</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stat-container atk">
+          <div class="stat-label">Attack Power</div>
+          <div class="stat-bar-outer">
+            <div class="stat-bar-fill">
+              <div class="stat-value">∞</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stat-container def">
+          <div class="stat-label">Defense</div>
+          <div class="stat-bar-outer">
+            <div class="stat-bar-fill">
+              <div class="stat-value">∞</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
   <script type="module">
-    // Firebase SDK (Versi CDN yang kompatibel dengan GitHub Pages)
+    // Firebase Configuration
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
     import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
@@ -290,52 +1291,276 @@
       messagingSenderId: "990174890024",
       appId: "1:990174890024:web:ab6abde9af8559e9318d1d"
     };
-    // ------------------------------------------
 
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const provider = new GoogleAuthProvider();
 
-    // --- FUNGSI UTAMA (Logika Animasi + Login) ---
-    window.loginGoogle = function() {
-      console.log("Memulai Login...");
-      
-      signInWithPopup(auth, provider)
-        .then((result) => {
-          const user = result.user;
-          console.log("Login Sukses: ", user.displayName);
+    // ULTRA PERFORMANCE VARIABLES
+    let animationId;
+    let starCount = 300;
+    let particlePool = [];
+    let shatterPool = [];
 
-          // 1. Sembunyikan Halaman Login
-          document.getElementById("loginPage").classList.add("hidden");
+    // DOM ELEMENTS
+    const loadingScreen = document.getElementById('loadingScreen');
+    const loginPage = document.getElementById('loginPage');
+    const cosmicBattle = document.getElementById('cosmicBattle');
+    const homePage = document.getElementById('homePage');
+    const userName = document.getElementById('userName');
+    const legendaryRank = document.getElementById('legendaryRank');
+    const starsBg = document.getElementById('starsBg');
+    const starsFg = document.getElementById('starsFg');
+    const particles = document.getElementById('particles');
+    const loginBtn = document.querySelector('.login-btn');
 
-          // 2. Tampilkan Animasi Matahari vs Bulan (GOKIL!)
-          const cosmicBattle = document.getElementById("cosmicBattle");
-          cosmicBattle.classList.remove("hidden");
+    // LEGENDARY RANK SYSTEM
+    const legendaryRanks = [
+      'COSMIC GOD',
+      'ULTRA SUPERNOVA',
+      'VOID EMPEROR',
+      'ETERNAL LEGEND',
+      'MULTIVERSE KING'
+    ];
 
-          // 3. Set Nama User di Dashboard (Diam-diam)
-          document.getElementById("userName").innerText = "🔥 Halo, " + user.displayName;
-
-          // 4. Atur Waktu Pemudaran Animasi (Transisi ke Dashboard)
-          // Animasi tabrakan selesai di 4 detik, kita pudar di 5.5 detik
-          setTimeout(() => {
-            cosmicBattle.style.opacity = '0'; // Pudar pelan-pelan
-
-            // Setelah benar-benar pudar (1.5 detik kemudian), sembunyikan total dan munculkan Dashboard
-            setTimeout(() => {
-              cosmicBattle.classList.add("hidden"); // Sembunyikan total
-              document.getElementById("homePage").classList.remove("hidden"); // Tampilkan Dashboard
-            }, 1500); // Waktu transisi opacity CSS
-
-          }, 5500); // Waktu munculnya animasi kosmik
-
-        })
-        .catch((error) => {
-          console.error("Login Gagal: ", error);
-          alert("Error saat Login: " + error.message);
-        });
+    // INITIALIZE STARFIELD
+    function createStars(container, count, className, sizeRange = [1, 3], speedRange = [1, 3]) {
+      for (let i = 0; i < count; i++) {
+        const star = document.createElement('div');
+        star.className = className;
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.width = Math.random() * (sizeRange[1] - sizeRange[0]) + sizeRange[0] + 'px';
+        star.style.height = star.style.width;
+        star.style.animationDuration = (Math.random() * (speedRange[1] - speedRange[0]) + speedRange[0]) + 's';
+        star.style.animationDelay = Math.random() * 4 + 's';
+        container.appendChild(star);
+      }
     }
-  </script>
 
+    // PARTICLE SYSTEM
+    function createParticle(x, y, vx, vy, life = 1000) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.left = x + 'px';
+      particle.style.top = y + 'px';
+      particle.style.width = Math.random() * 6 + 2 + 'px';
+      particle.style.height = particle.style.width;
+      particle.style.opacity = Math.random() * 0.8 + 0.2;
+      particles.appendChild(particle);
+
+      const startTime = Date.now();
+      function updateParticle() {
+        const elapsed = Date.now() - startTime;
+        if (elapsed > life) {
+          particle.remove();
+          return;
+        }
+        
+        particle.style.left = (parseFloat(particle.style.left) + vx) + 'px';
+        particle.style.top = (parseFloat(particle.style.top) + vy) + 'px';
+        particle.style.opacity = (1 - (elapsed / life)) * 0.8;
+        particle.style.transform = `scale(${1 - (elapsed / life)})`;
+        
+        requestAnimationFrame(updateParticle);
+      }
+      updateParticle();
+    }
+
+    // SHATTER EFFECT
+    function createShatter(x, y, count = 15) {
+      for (let i = 0; i < count; i++) {
+        const shatter = document.createElement('div');
+        shatter.className = 'shatter';
+        shatter.style.left = x + 'px';
+        shatter.style.top = y + 'px';
+        shatter.style.transform = `rotate(${Math.random() * 360}deg)`;
+        particles.appendChild(shatter);
+
+        const vx = (Math.random() - 0.5) * 20;
+        const vy = (Math.random() - 0.5) * 20;
+        const life = 800 + Math.random() * 400;
+
+        const startTime = Date.now();
+        function updateShatter() {
+          const elapsed = Date.now() - startTime;
+          if (elapsed > life) {
+            shatter.remove();
+            return;
+          }
+          
+          shatter.style.left = (parseFloat(shatter.style.left) + vx * 0.1) + 'px';
+          shatter.style.top = (parseFloat(shatter.style.top) + vy * 0.1) + 'px';
+          shatter.style.opacity = 1 - (elapsed / life);
+          shatter.style.transform += ` scale(${0.8 + (elapsed / life) * 0.2})`;
+          
+          requestAnimationFrame(updateShatter);
+        }
+        updateShatter();
+      }
+    }
+
+    // ELECTRICITY EFFECT
+    function createElectricity(x1, y1, x2, y2) {
+      const bolt = document.createElement('div');
+      bolt.className = 'electricity';
+      bolt.style.left = x1 + 'px';
+      bolt.style.top = y1 + 'px';
+      bolt.style.width = Math.hypot(x2 - x1, y2 - y1) + 'px';
+      bolt.style.transform = `rotate(${Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI}deg)`;
+      bolt.style.animationDelay = Math.random() * 0.3 + 's';
+      particles.appendChild(bolt);
+
+      setTimeout(() => bolt.remove(), 1000);
+    }
+    
+
+    // MAIN ANIMATION LOOP
+    function animate() {
+      // Dynamic star movement
+      document.querySelectorAll('.star-bg, .star-fg').forEach((star, index) => {
+        const rect = star.getBoundingClientRect();
+        if (rect.left < -10 || rect.right > window.innerWidth + 10) {
+          star.style.animationDelay = Math.random() * 4 + 's';
+        }
+      });
+
+      animationId = requestAnimationFrame(animate);
+    }
+
+    // Initialize everything
+    function init() {
+      // Create stars
+      createStars(starsBg, 200, 'star-bg', [0.5, 2], [2, 5]);
+      createStars(starsFg, 100, 'star-fg', [1.5, 4], [1, 3]);
+
+      // Start main animation loop
+      animate();
+
+      // Loading screen sequence
+      setTimeout(() => {
+        loadingScreen.style.display = 'none';
+        loginPage.style.opacity = '1';
+      }, 3000);
+    }
+
+    // ULTIMATE LOGIN FUNCTION
+    window.loginGoogle = async function() {
+      console.log('🌌 Initiating Divine Portal Sequence... 🌌');
+      
+      try {
+        loginBtn.textContent = '🔮 CONNECTING TO COSMOS...';
+        loginBtn.style.transform = 'scale(0.95)';
+        
+        const result = await signInWithPopup(auth, provider);
+        const user = result.user;
+        
+        console.log('✅ LEGENDARY WARRIOR ENTERED:', user.displayName);
+
+        // PORTAL TRANSITION SEQUENCE
+        loginPage.classList.add('hidden');
+        
+        // Trigger cosmic battle
+        setTimeout(() => {
+          cosmicBattle.classList.remove('hidden');
+          
+          // SUPERNOVA COLLISION EFFECTS
+          setTimeout(() => {
+            // Massive particle explosion
+            for (let i = 0; i < 100; i++) {
+              createParticle(
+                window.innerWidth / 2 + (Math.random() - 0.5) * 200,
+                window.innerHeight / 2 + (Math.random() - 0.5) * 200,
+                (Math.random() - 0.5) * 8,
+                (Math.random() - 0.5) * 8,
+                2000
+              );
+            }
+            
+            // Shatter effects
+            createShatter(window.innerWidth / 2, window.innerHeight / 2, 50);
+            
+            // Electricity effects
+            for (let i = 0; i < 20; i++) {
+              createElectricity(
+                window.innerWidth / 2 + (Math.random() - 0.5) * 300,
+                window.innerHeight / 2 + (Math.random() - 0.5) * 300,
+                window.innerWidth / 2 + (Math.random() - 0.5) * 400,
+                window.innerHeight / 2 + (Math.random() - 0.5) * 400
+              );
+            }
+          }, 2800);
+        }, 500);
+
+        // Set legendary warrior data
+        userName.textContent = `👑 ${user.displayName.toUpperCase()} 👑`;
+        
+        // Generate legendary rank
+        const randomRank = legendaryRanks[Math.floor(Math.random() * legendaryRanks.length)];
+        legendaryRank.textContent = randomRank;
+
+        // THRONE REVEAL SEQUENCE (after 8 seconds total)
+        setTimeout(() => {
+          cosmicBattle.style.opacity = '0';
+          cosmicBattle.style.transform = 'scale(1.5)';
+          
+          setTimeout(() => {
+            cosmicBattle.classList.add('hidden');
+            homePage.classList.remove('hidden');
+            
+            // Final celebration effects
+            for (let i = 0; i < 200; i++) {
+              setTimeout(() => {
+                createParticle(
+                  Math.random() * window.innerWidth,
+                  Math.random() * window.innerHeight,
+                  (Math.random() - 0.5) * 4,
+                  (Math.random() - 0.5) * 4 - 1,
+                  3000
+                );
+              }, i * 10);
+            }
+          }, 2000);
+        }, 8000);
+
+      } catch (error) {
+        console.error('❌ PORTAL DISRUPTION:', error);
+        alert('⚠️ Cosmic interference detected! Please try again.');
+        loginBtn.textContent = '🚀 ENTER DIVINE REALM 🚀';
+        loginBtn.style.transform = '';
+      }
+    };
+
+    // Event Listeners
+    loginBtn.addEventListener('click', loginGoogle);
+
+    // Mouse trail effects
+    document.addEventListener('mousemove', (e) => {
+      if (Math.random() < 0.1) {
+        createParticle(e.clientX, e.clientY, 
+          (Math.random() - 0.5) * 3, 
+          (Math.random() - 0.5) * 3, 500);
+      }
+    });
+
+    // Window resize handler
+    window.addEventListener('resize', () => {
+      // Recalculate star positions if needed
+    });
+
+    // PWA-like fullscreen on mobile
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').catch(() => {});
+    }
+
+    // Initialize the LEGENDARY EXPERIENCE
+    init();
+
+    // Performance monitoring
+    console.log('🌌 ULTRA COSMIC APOCALYPSE REALM LOADED');
+    console.log('💎 Features: 1000+ lines of pure epicness');
+    console.log('🚀 Ready for Elon Musk to witness!');
+  </script>
 </body>
 </html>
