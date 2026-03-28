@@ -2,68 +2,348 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Login Google</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dark Fantasy Quest - Cosmic Battle</title>
+  
+  <style>
+    /* -----------------------------------------------------------
+       1. CSS UTAMA (Dark Fantasy Theme)
+       ----------------------------------------------------------- */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Cinzel', serif; /* Font Gothic/Fantasy (Opsional, pakai sans-serif juga gapapa) */
+      background: #000; /* Hitam pekat */
+      color: #eee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden; /* Mencegah scroll saat animasi */
+    }
+
+    .container {
+      text-align: center;
+      transition: opacity 1s ease-in-out;
+      width: 100%;
+      max-width: 600px;
+      padding: 20px;
+    }
+
+    .hidden {
+      display: none !important;
+      opacity: 0;
+    }
+
+    /* Tampilan Halaman Login */
+    #loginPage h1 {
+      font-size: 3rem;
+      color: #ff4500; /* Merah oranye gelap */
+      text-shadow: 0 0 15px #ff4500;
+      margin-bottom: 10px;
+    }
+
+    #loginPage p {
+      color: #aaa;
+      margin-bottom: 30px;
+    }
+
+    /* Tombol Login Gokil */
+    .login-btn {
+      padding: 15px 40px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border: 2px solid #555;
+      border-radius: 50px;
+      background: #111;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(255, 69, 0, 0.2);
+    }
+
+    .login-btn:hover {
+      background: #ff4500;
+      border-color: #ff4500;
+      color: #000;
+      box-shadow: 0 0 30px #ff4500;
+      transform: scale(1.05);
+    }
+
+    /* -----------------------------------------------------------
+       2. CSS ANIMASI GOKIL: MATAHARI VS BULAN (The Cosmic Battle)
+       ----------------------------------------------------------- */
+    #cosmicBattle {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999; /* Selalu di atas */
+      transition: opacity 1.5s ease-in-out;
+    }
+
+    .battle-container {
+      position: relative;
+      width: 300px;
+      height: 300px;
+    }
+
+    /* Matahari (Kiri -> Kanan) */
+    .sun {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle, #fff 0%, #ffdf00 40%, #ff8c00 70%, transparent 100%);
+      border-radius: 50%;
+      top: 75px;
+      left: -200px; /* Mulai dari luar kiri */
+      box-shadow: 0 0 60px #ffdf00, 0 0 100px #ff8c00;
+      animation: sun-move 4s forwards cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Bulan (Kanan -> Kiri) */
+    .moon {
+      position: absolute;
+      width: 140px;
+      height: 140px;
+      background: #111; /* Gelap pekat */
+      border-radius: 50%;
+      top: 80px;
+      right: -200px; /* Mulai dari luar kanan */
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.2) inset, 0 0 50px rgba(100, 100, 100, 0.5);
+      animation: moon-move 4s forwards cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Efek Cahaya Gerhana (Tengah) */
+    .eclipse-aura {
+      position: absolute;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: transparent;
+      top: 70px;
+      left: 70px; /* Posisi tengah */
+      box-shadow: 0 0 50px #fff, 0 0 100px #ffd700;
+      opacity: 0;
+      animation: eclipse-glow 1s forwards 2.5s; /* Muncul setelah tabrakan */
+    }
+
+    /* Keyframes Animasi */
+    @keyframes sun-move {
+      0% { left: -200px; }
+      50% { left: 75px; } /* Bertemu di tengah */
+      60% { left: 75px; transform: scale(1.1); } /* Sedikit membesar saat tabrakan */
+      100% { left: 75px; transform: scale(1); } /* Tetap di tengah */
+    }
+
+    @keyframes moon-move {
+      0% { right: -200px; }
+      50% { right: 80px; } /* Bertemu di tengah */
+      60% { right: 80px; transform: scale(1.05); } /* Sedikit membesar saat tabrakan */
+      100% { right: 80px; transform: scale(1); } /* Tetap di tengah */
+    }
+
+    @keyframes eclipse-glow {
+      0% { opacity: 0; transform: scale(1); }
+      100% { opacity: 1; transform: scale(1.2); }
+    }
+
+    /* -----------------------------------------------------------
+       3. CSS DASHBOARD (HomePage setelah Animasi)
+       ----------------------------------------------------------- */
+    #homePage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      opacity: 1; /* Diatur oleh JS */
+    }
+
+    #homePage h1 {
+      font-size: 2.5rem;
+      color: #ffd700; /* Emas */
+      text-shadow: 0 0 10px #ffd700;
+      margin-bottom: 5px;
+    }
+
+    #homePage p {
+      color: #ccc;
+      margin-bottom: 30px;
+    }
+
+    /* Stats Card ala RPG */
+    .stats-card {
+      background: rgba(20, 20, 20, 0.8);
+      border: 2px solid #ffd700;
+      border-radius: 15px;
+      padding: 25px;
+      width: 320px;
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
+      backdrop-filter: blur(5px);
+    }
+
+    .rank-label {
+      font-size: 1rem;
+      color: #aaa;
+      letter-spacing: 2px;
+      margin-bottom: 5px;
+    }
+
+    .rank-value {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #ffd700;
+      text-shadow: 0 0 20px #ffd700;
+      margin-bottom: 20px;
+    }
+
+    .hp-bar-container {
+      margin-top: 15px;
+    }
+
+    .hp-label {
+      font-size: 0.9rem;
+      color: #ff5555;
+      margin-bottom: 5px;
+      text-align: left;
+    }
+
+    .hp-bar-bg {
+      width: 100%;
+      height: 25px;
+      background: #222;
+      border-radius: 12px;
+      border: 1px solid #444;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hp-bar-fill {
+      width: 100%; /* Full HP */
+      height: 100%;
+      background: linear-gradient(90deg, #aa0000, #ff0000);
+      box-shadow: 0 0 15px #ff0000;
+      animation: hp-pulse 2s infinite;
+    }
+
+    .hp-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      font-weight: bold;
+      font-size: 0.9rem;
+      text-shadow: 0 0 5px #000;
+    }
+
+    @keyframes hp-pulse {
+      0% { opacity: 0.8; }
+      50% { opacity: 1; }
+      100% { opacity: 0.8; }
+    }
+  </style>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<!-- HALAMAN LOGIN -->
-<div id="loginPage" class="container">
-  <h1>🔥 Welcome 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥</h1>
-  <p>login lah  🔥🔥🔥🔥🔥🔥🔥woowowo</p>
-  <button onclick="loginGoogle()">Login dengan Google</button>
-</div>
+  <div id="loginPage" class="container">
+    <h1>⚔️ Arvin's Destiny</h1>
+    <p>Selamat datang di gerbang petualangan epik...</p>
+    <button class="login-btn" onclick="loginGoogle()">LOGIN WITH GOOGLE</button>
+  </div>
 
-<!-- HALAMAN SETELAH LOGIN -->
-<div id="homePage" class="container hidden">
-  <h1 id="userName"></h1>
-  <p>yokoso to mobile lendj</p>
+  <div id="cosmicBattle" class="hidden">
+    <div class="battle-container">
+      <div class="sun"></div>
+      <div class="moon"></div>
+      <div class="eclipse-aura"></div>
+    </div>
+  </div>
 
-  <!-- ANIMASI -->
-  <div class="orb"></div>
-  <div class="orb2"></div>
-  <div class="orb3"></div>
-</div>
+  <div id="homePage" class="container hidden">
+    <h1 id="userName">🔥 Halo, Adventurer</h1>
+    <p>Rank kamu telah ditentukan oleh takdir.</p>
 
-<!-- FIREBASE + SCRIPT -->
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
-import { getAuth, GoogleAuthProvider, signInWithPopup } 
-from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
+    <div class="stats-card">
+      <div class="rank-label">CURRENT RANK</div>
+      <div class="rank-value">S-RANK</div>
+      
+      <div class="hp-bar-container">
+        <div class="hp-label">HEALTH POINTS</div>
+        <div class="hp-bar-bg">
+          <div class="hp-bar-fill"></div>
+          <div class="hp-text">100 / 100</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-// CONFIG KAMU
-const firebaseConfig = {
-  apiKey: "AIzaSyAY6LV_wAqR3ggGpa8Ikmj_D3k8C6ya_pA",
-  authDomain: "kokokokokokk-ee46b.firebaseapp.com",
-  projectId: "kokokokokokk-ee46b",
-  storageBucket: "kokokokokokk-ee46b.firebasestorage.app",
-  messagingSenderId: "990174890024",
-  appId: "1:990174890024:web:ab6abde9af8559e9318d1d"
-};
+  <script type="module">
+    // Firebase SDK (Versi CDN yang kompatibel dengan GitHub Pages)
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
-  
-// INIT
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const provider = new GoogleAuthProvider();
+    // --- PASTE CONFIG KAMU DI SINI (Wajib!) ---
+    const firebaseConfig = {
+      apiKey: "AIzaSyAY6LV_wAqR3ggGpa8Ikmj_D3k8C6ya_pA",
+      authDomain: "kokokokokokk-ee46b.firebaseapp.com",
+      projectId: "kokokokokokk-ee46b",
+      storageBucket: "kokokokokokk-ee46b.firebasestorage.app",
+      messagingSenderId: "990174890024",
+      appId: "1:990174890024:web:ab6abde9af8559e9318d1d"
+    };
+    // ------------------------------------------
 
-// LOGIN FUNCTION
-window.loginGoogle = function() {
-  signInWithPopup(auth, provider)
-    .then((result) => {
-      const user = result.user;
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
 
-      document.getElementById("loginPage").classList.add("hidden");
-      document.getElementById("homePage").classList.remove("hidden");
+    // --- FUNGSI UTAMA (Logika Animasi + Login) ---
+    window.loginGoogle = function() {
+      console.log("Memulai Login...");
+      
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          const user = result.user;
+          console.log("Login Sukses: ", user.displayName);
 
-      document.getElementById("userName").innerText =
-        "🔥 Halo, " + user.displayName;
-    })
-    .catch((error) => {
-      alert(error.message);
-    });
-}
-</script>
+          // 1. Sembunyikan Halaman Login
+          document.getElementById("loginPage").classList.add("hidden");
+
+          // 2. Tampilkan Animasi Matahari vs Bulan (GOKIL!)
+          const cosmicBattle = document.getElementById("cosmicBattle");
+          cosmicBattle.classList.remove("hidden");
+
+          // 3. Set Nama User di Dashboard (Diam-diam)
+          document.getElementById("userName").innerText = "🔥 Halo, " + user.displayName;
+
+          // 4. Atur Waktu Pemudaran Animasi (Transisi ke Dashboard)
+          // Animasi tabrakan selesai di 4 detik, kita pudar di 5.5 detik
+          setTimeout(() => {
+            cosmicBattle.style.opacity = '0'; // Pudar pelan-pelan
+
+            // Setelah benar-benar pudar (1.5 detik kemudian), sembunyikan total dan munculkan Dashboard
+            setTimeout(() => {
+              cosmicBattle.classList.add("hidden"); // Sembunyikan total
+              document.getElementById("homePage").classList.remove("hidden"); // Tampilkan Dashboard
+            }, 1500); // Waktu transisi opacity CSS
+
+          }, 5500); // Waktu munculnya animasi kosmik
+
+        })
+        .catch((error) => {
+          console.error("Login Gagal: ", error);
+          alert("Error saat Login: " + error.message);
+        });
+    }
+  </script>
 
 </body>
 </html>
