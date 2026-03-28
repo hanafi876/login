@@ -6,9 +6,7 @@
   <title>Dark Fantasy Quest - Cosmic Battle</title>
   
   <style>
-    /* -----------------------------------------------------------
-       1. CSS UTAMA (Dark Fantasy Theme)
-       ----------------------------------------------------------- */
+
     body {
       margin: 0;
       padding: 0;
@@ -48,7 +46,7 @@
       margin-bottom: 30px;
     }
 
-    /* Tombol Login Gokil */
+    /* Tombol Login */
     .login-btn {
       padding: 15px 40px;
       font-size: 1.2rem;
@@ -70,9 +68,6 @@
       transform: scale(1.05);
     }
 
-    /* -----------------------------------------------------------
-       2. CSS ANIMASI GOKIL: MATAHARI VS BULAN (The Cosmic Battle)
-       ----------------------------------------------------------- */
     #cosmicBattle {
       position: fixed;
       top: 0;
@@ -153,9 +148,7 @@
       100% { opacity: 1; transform: scale(1.2); }
     }
 
-    /* -----------------------------------------------------------
-       3. CSS DASHBOARD (HomePage setelah Animasi)
-       ----------------------------------------------------------- */
+
     #homePage {
       display: flex;
       flex-direction: column;
@@ -253,9 +246,9 @@
 <body>
 
   <div id="loginPage" class="container">
-    <h1>⚔️ Arvin's Destiny</h1>
-    <p>Selamat datang di gerbang petualangan epik...</p>
-    <button class="login-btn" onclick="loginGoogle()">LOGIN WITH GOOGLE</button>
+    <h1>sun kerah kalian bulan</h1>
+    <p>welkom ind</p>
+    <button class="login-btn" onclick="loginGoogle()">LOGIN       GOOGLE</button>
   </div>
 
   <div id="cosmicBattle" class="hidden">
@@ -267,18 +260,18 @@
   </div>
 
   <div id="homePage" class="container hidden">
-    <h1 id="userName">🔥 Halo, Adventurer</h1>
-    <p>Rank kamu telah ditentukan oleh takdir.</p>
+    <h1 id="userName">selamat datang wahai manusia</h1>
+    <p>Rank mu telah ditentukan oleh takdir.</p>
 
     <div class="stats-card">
-      <div class="rank-label">CURRENT RANK</div>
-      <div class="rank-value">S-RANK</div>
+      <div class="rank-label">gokil abis</div>
+      <div class="rank-value">anda terlalu op rank di atas rata rata manusia</div>
       
       <div class="hp-bar-container">
         <div class="hp-label">HEALTH POINTS</div>
         <div class="hp-bar-bg">
           <div class="hp-bar-fill"></div>
-          <div class="hp-text">100 / 100</div>
+          <div class="hp-text">9999999999999999999999999</div>
         </div>
       </div>
     </div>
@@ -289,7 +282,6 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
     import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
-    // --- PASTE CONFIG KAMU DI SINI (Wajib!) ---
     const firebaseConfig = {
       apiKey: "AIzaSyAY6LV_wAqR3ggGpa8Ikmj_D3k8C6ya_pA",
       authDomain: "kokokokokokk-ee46b.firebaseapp.com",
